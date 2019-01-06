@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.appHeader {
+  background-color: #103048;
+  width: 100%;
+}
+
+.headerContent {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.appHeader img {
+  margin: 10px 0;
+}
+
+.popUpClass {
+  background-color: blueviolet;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.lessonsList {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding-top: 20px;
+}
+
+.lessonLink {
+  cursor: pointer;
+  padding-top: 10px;
+}
+.lessonsContent {
+  padding-top: 30px;
+  width: 60%;
+}
+
+.logutBtn {
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logutBtn:hover {
+  color: black;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.emailAdress {
+  color: white;
+}
