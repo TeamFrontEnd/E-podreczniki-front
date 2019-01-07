@@ -5,6 +5,10 @@ import PropTypes from "prop-types";
 
 import Chapters from "./../section/Chapters";
 
+import "./lesson.css";
+
+import { Link } from "react-router-dom";
+
 class Lessons extends Component {
   state = {
     requestMessage: "",
@@ -32,6 +36,8 @@ class Lessons extends Component {
       lesson: res.data.data
     });
   };
+
+  //tu szukac wzorow w rozdziale
 
   getChapters = async slug => {
     let confg = {
@@ -61,14 +67,16 @@ class Lessons extends Component {
       if(chapter.lessons.length) {
         lessonList = chapter.lessons.map((lesson, lessonIndex) => {
           return (
-            <div key={'lesson_' + lessonIndex}>{lesson.title} </div>
+            <Link className="titles" to={"/lesson/" + lesson.slug} key={'lesson_' + lessonIndex}>
+              {lesson.title}
+            </Link>
           )
         })
       }
       return (
-        <div key={'chapter_' + index}>
-          {chapter.title}
-          {lessonList}
+        <div className="allTitle" key={'chapter_' + index}>
+        <span className="chapterTitle">  {"Rozdział " }{index + 1}{ ". " + chapter.title} </span>
+        <span>{lessonList}</span>
         </div>
 
       )
@@ -84,7 +92,7 @@ class Lessons extends Component {
     return (
       <React.Fragment>
         <div className="lessonsList">
-         <h1 className="mb-2">Lekcje</h1>
+         <h1 className="mb-2">Tutaj będzie tytuł książki</h1>
 
      {contentList}
         </div>

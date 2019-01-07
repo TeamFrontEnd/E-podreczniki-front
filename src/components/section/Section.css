@@ -80,6 +80,11 @@
   text-transform: uppercase;
 }
 
+.chapterHeader {
+  background-color: #eef5d3;
+  padding: 10px 5px 10px 5px;
+}
+
 /* Book full screen */
 .bookLessonList {
   margin-left: 30px;
@@ -88,15 +93,19 @@
   align-content: flex-start;
   font-family: Calibri;
   font-size: 20px;
-  width: 40%;
+  width: 92%;
 }
 
 .spanLessonList {
-  display: block;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
-  color: black;
+  color: darkslateblue;
+  text-decoration: none;
 }
 
 .spanLessonList:hover {
-  color: #3FBF0A;
+  color: #8470FF;
+  text-decoration: none;
+  background-color: #eef5d3;
 }

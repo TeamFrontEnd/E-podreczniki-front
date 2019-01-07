@@ -70,12 +70,14 @@ class Chapters extends Component {
       }
       return (
         <div key={'chapter_' + chapterIndex}>
-          <h3 onClick={this.toggleChapter.bind(this, chapterIndex)}>
+          <h3 className="chapterHeader" onClick={this.toggleChapter.bind(this, chapterIndex)}>
             Rozdział {chapter.number}.{" " + chapter.title}
           </h3>
+
           {chapterContent ? (
             <div className="bookLessonList">{chapterContent}</div>
           ) : null}
+
         </div>
       );
     });

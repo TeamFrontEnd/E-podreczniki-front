@@ -1,0 +1,28 @@
+.chapterTitle {
+  font-size: 15px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  color: #1174a5;
+  font-size: 12px;
+  margin-left: 15px;
+
+}
+
+.titles:hover {
+  text-decoration: none;
+  background-color: #d2d2d2;
+  color: #26a6dd;
+}
+
+.allTitle {
+  width:80%;
+}
+
+.mb-2 {
+  font-size: 20px;
+  margin-top: 20px;
+}
