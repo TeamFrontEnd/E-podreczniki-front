@@ -14,7 +14,6 @@ class Lessons extends Component {
     requestMessage: "",
     lesson: {},
     textbookContent: []
-
   };
   onLinkClick = (id, e) => {
     this.props.getLesson(this.props.apiToken, id);
@@ -52,9 +51,10 @@ class Lessons extends Component {
 
     this.setState({
       requestMessage: res.data.message,
-      textbookContent: res.data.data
+      textbookContent: res.data.data,
+      textbookTitle: res.data.additionalData.textbookTitle
     });
-  }
+  };
   componentDidMount() {
     this.getChapters(this.props.slug);
     this.getLesson(this.props.match.params.slug);
@@ -64,23 +64,31 @@ class Lessons extends Component {
     let list;
     list = this.state.textbookContent.map((chapter, index) => {
       let lessonList;
-      if(chapter.lessons.length) {
+      if (chapter.lessons.length) {
         lessonList = chapter.lessons.map((lesson, lessonIndex) => {
           return (
-            <Link className="titles" to={"/lesson/" + lesson.slug} key={'lesson_' + lessonIndex}>
+            <Link
+              className="titles"
+              to={"/lesson/" + lesson.slug}
+              key={"lesson_" + lessonIndex}
+            >
               {lesson.title}
             </Link>
-          )
-        })
+          );
+        });
       }
       return (
-        <div className="allTitle" key={'chapter_' + index}>
-        <span className="chapterTitle">  {"Rozdział " }{index + 1}{ ". " + chapter.title} </span>
-        <span>{lessonList}</span>
+        <div className="allTitle" key={"chapter_" + index}>
+          <span className="chapterTitle">
+            {" "}
+            {"Rozdział "}
+            {index + 1}
+            {". " + chapter.title}{" "}
+          </span>
+          <span>{lessonList}</span>
         </div>
-
-      )
-    })
+      );
+    });
 
     return list;
   };
@@ -88,13 +96,13 @@ class Lessons extends Component {
   render() {
     let count = 1;
     let contentList;
-      contentList = this.generateList();
+    contentList = this.generateList();
     return (
       <React.Fragment>
         <div className="lessonsList">
-         <h1 className="mb-2">Tutaj będzie tytuł książki</h1>
+          <h1 className="mb-2">{this.state.textbookTitle}</h1>
 
-     {contentList}
+          {contentList}
         </div>
         <div className="lessonsContent">
           <h2 className="lessonTitle">{this.state.lesson.title}</h2>
@@ -106,7 +114,6 @@ class Lessons extends Component {
     );
   }
 }
-
 
 Lessons.propTypes = {
   slug: PropTypes.string.isRequired
