@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { settextBookSlug } from "../../actions/sectionActions";
 
 class Chapters extends Component {
   state = {
@@ -45,6 +48,10 @@ class Chapters extends Component {
     }));
   };
 
+  addToRedux = () => {
+    let adres = this.props.match.params.slug;
+    this.props.settextBookSlug(adres);
+  }
   generateBookContent = () => {
     let content = this.state.textbookContent.map((chapter, chapterIndex) => {
       let chapterContent = null;
@@ -55,14 +62,14 @@ class Chapters extends Component {
       ) {
         chapterContent = chapter.lessons.map((lesson, index) => {
           return (
-            <Link className="spanLessonList" to={"/lesson/" + lesson.slug}>
+            <Link onClick={this.addToRedux.bind(this)} className="spanLessonList" to={"/lesson/" + lesson.slug} key={'lesson_' + index}>
               {index + 1 + ". " + lesson.title}
             </Link>
           );
         });
       }
       return (
-        <div>
+        <div key={'chapter_' + chapterIndex}>
           <h3 onClick={this.toggleChapter.bind(this, chapterIndex)}>
             Rozdział {chapter.number}.{" " + chapter.title}
           </h3>
@@ -88,4 +95,4 @@ class Chapters extends Component {
   }
 }
 
-export default Chapters;
+export default connect(null, {settextBookSlug})(Chapters);

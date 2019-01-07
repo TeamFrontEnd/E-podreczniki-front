@@ -1,7 +1,8 @@
-import { GET_CATEGORIES } from "../actions/types";
+import { GET_CATEGORIES, SET_TEXTBOOK_SLUG } from "../actions/types";
 
 const initialState = {
-  categories: []
+  categories: [],
+  textbookSlug: ''
 };
 
 export default function(state = initialState, action) {
@@ -11,6 +12,11 @@ export default function(state = initialState, action) {
         ...state,
         categories: action.payload
       };
+    case SET_TEXTBOOK_SLUG:
+      return {
+        ...state,
+        textbookSlug: action.payload
+      }
     default:
       return state;
   }

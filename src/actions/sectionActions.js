@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_CATEGORIES } from "../actions/types";
+import { GET_CATEGORIES, SET_TEXTBOOK_SLUG } from "../actions/types";
 
 //TODO: headers to fix
 export const getCategories = () => async dispatch => {
@@ -18,3 +18,10 @@ export const getCategories = () => async dispatch => {
     payload: res.data.data
   });
 };
+
+export const settextBookSlug = slug => dispatch => {
+  dispatch({
+    type: SET_TEXTBOOK_SLUG,
+    payload: slug
+  })
+}
