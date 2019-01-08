@@ -7,6 +7,7 @@ import Lessons from "./components/lesson/Lessons";
 import Category from "./components/section/Category";
 import Textbook from "./components/section/Textbook";
 import Chapters from "./components/section/Chapters";
+import CreateTextbook from "./components/user/CreateTextbook";
 import AccountPopup from "./components/layout/AccountPopup";
 import store from "./store";
 
@@ -25,6 +26,7 @@ class App extends Component {
                 <Route exact path="/category/:slug" component={Textbook} />
                 <Route exact path="/textbook/:slug" component={Chapters} />
                 <Route exact path="/lesson/:slug" component={Lessons} />
+                <Route exact path="/user/textbook" component={CreateTextbook} />
               </Switch>
             </div>
             <AccountPopup />
