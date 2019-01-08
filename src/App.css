@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color:#7fbbe956;
+  
+}
+
+.appHeader {
+  background-color: #103048;
+  width: 100%;
+}
+
+.headerContent {  
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.appHeader img {
+  margin: 10px 0;
+}
+
+.popUpClass {
+  background-color: blueviolet;
+}
+
+.container {  
+  width: 50%;  
+  display: flex;
+  flex-direction: row;
+  height: 100%;    
+}
+
+.lessonsListFrame {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 30%;
+  padding-top: 20px;  
+    
+    
+}
+.lessonsList{
+position: fixed;
+top: 16%;
+left: 25%;
+width: 15.4%;
+padding-left: 2.5%;
+background-color: #1030480c;
+border: 1px solid #10304810;
+}
+
+.lessonLink {
+  cursor: pointer;
+  padding-top: 10px;
+}
+.lessonsContent {
+  padding-top: 30px;
+  width: 60%; 
+}
+
+.lessonTitle{  
+  text-align: center;
+  border-bottom: 1px solid #10304810;
+}
+
+.logutBtn {
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logutBtn:hover {
+  color: black;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.emailAdress {
+  color: white;
+}
+.categoryLabel:hover{
+  font-weight: bold;
+  font-size: 27px;
+  opacity : 0.80;
+filter : alpha(opacity=10);
+}
+.categoryLink:hover{
+  border: solid #103048;
+  border-width: 2px;
+  opacity: 0.85;
+
+  transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    z-index: 0;
+}
+.categoryLink:active{
+  opacity: 0.2;
+}
+.loginimg{
+  position: relative;
+  top: 16%;
+  left: 10%;
+  height: 40px;
+}
+.loginimg:hover{
+  opacity: 0.8;
+  transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    z-index: 0;
+}
+.loginimg:active{
+  opacity: 0.2;
+  transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    z-index: 0;
+}
+.FooterBox{
+  position: relative;
+  bottom: -27px;
+  height: 18%;
+  width: 100%;
+  background-color: #1030480c;
+  z-index: 0;
+}
+.Footer{
+  position: relative;
+  bottom: 0px;
+  text-align: center;
+  font-size: 20px;   
+}
+.FooterLink{
+  color: black;
+}
+.FooterLink:hover{  
+  color: #103048;
+  font-size: 105%; 
+  text-decoration: none; 
+}

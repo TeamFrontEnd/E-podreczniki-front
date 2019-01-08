@@ -1,0 +1,111 @@
+.categoryBox {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.categoryLink {
+  display: block;
+  border: 1px solid black;
+  margin: 20px 5px;
+  width: 350px;
+  height: 200px;
+  position: relative;
+  padding: 0;
+}
+
+.categoryImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.categoryLabel {
+  margin: 0;
+  bottom: -2px;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  line-height: 40px;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+/* Book List css */
+.bookListItem {
+  margin: 25px 0;
+  padding: 5px;
+  height: 160px;
+  display: grid;
+  grid-template-columns: 120px auto;
+  grid-template-rows: 50px 100px;
+  grid-template-areas:
+    "bookImage bookTitle"
+    "bookImage bookData";
+  border-top: 1px solid black;
+}
+
+.bookImage {
+  height: 150px;
+  grid-area: bookImage;
+  margin: 0 auto;
+}
+
+.bookTitle {
+  grid-area: bookTitle;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: black;
+  font-weight: 700;
+}
+
+.bookData {
+  grid-area: bookData;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bookDataSpan {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.chapterHeader {
+  background-color: #eef5d3;
+  padding: 10px 5px 10px 5px;
+}
+
+/* Book full screen */
+.bookLessonList {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  font-family: Calibri;
+  font-size: 20px;
+  width: 92%;
+}
+
+.spanLessonList {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: darkslateblue;
+  text-decoration: none;
+}
+
+.spanLessonList:hover {
+  color: #8470FF;
+  text-decoration: none;
+  background-color: #eef5d3;
+}
