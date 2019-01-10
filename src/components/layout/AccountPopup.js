@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
-import Popup from 'reactjs-popup';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React, { Component } from "react";
+import Popup from "reactjs-popup";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
-import { changePopupStatus, logIn } from '../../actions/appActions';
-import '../../../src/App.css';
+import {
+  changePopupStatus,
+  logIn,
+  registerUser
+} from "../../actions/appActions";
+import "../../../src/App.css";
 
 class AccountPopup extends Component {
   state = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     errors: {}
   };
   closeModal = () => {
@@ -27,12 +31,12 @@ class AccountPopup extends Component {
     e.preventDefault();
     const { email, password } = this.state;
 
-    if (email === '') {
-      this.setState({ errors: { email: 'E-mail jest wymagany.' } });
+    if (email === "") {
+      this.setState({ errors: { email: "E-mail jest wymagany." } });
       return;
     }
-    if (password === '') {
-      this.setState({ errors: { password: 'Hasło jest wymagane.' } });
+    if (password === "") {
+      this.setState({ errors: { password: "Hasło jest wymagane." } });
       return;
     }
 
@@ -43,6 +47,27 @@ class AccountPopup extends Component {
 
     this.props.logIn(newLoginTry);
   };
+
+  handleRegister = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+
+    if (email === "") {
+      this.setState({ errors: { email: "E-mail jest wymagany." } });
+      return;
+    }
+    if (password === "") {
+      this.setState({ errors: { password: "Hasło jest wymagane." } });
+      return;
+    }
+
+    const newUser = {
+      email,
+      password
+    };
+
+    this.props.registerUser(newUser);
+  };
   render() {
     const { email, password, errors } = this.state;
     return (
@@ -50,7 +75,7 @@ class AccountPopup extends Component {
         open={this.props.popUpOpen}
         closeOnDocumentClick
         onClose={this.closeModal}
-        contentStyle={{ width: '600px', padding: '20px' }}
+        contentStyle={{ width: "600px", padding: "20px" }}
       >
         <div className="loginPanel">
           <div className="card mb-3">
@@ -62,8 +87,8 @@ class AccountPopup extends Component {
                   <input
                     type="email"
                     name="email"
-                    className={classnames('form-control form-control-lg', {
-                      'is-invalid': errors.email
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.email
                     })}
                     placeholder="Podaj E-mail"
                     value={email}
@@ -78,8 +103,8 @@ class AccountPopup extends Component {
                   <input
                     type="password"
                     name="password"
-                    className={classnames('form-control form-control-lg', {
-                      'is-invalid': errors.password
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password
                     })}
                     placeholder="Podaj haso"
                     value={password}
@@ -95,6 +120,12 @@ class AccountPopup extends Component {
                   value="Zaloguj"
                   className="btn btn-light btn-block"
                 />
+                <button
+                  onClick={this.handleRegister.bind(this)}
+                  className="btn btn-light btn-block"
+                >
+                  Zarejestruj
+                </button>
               </form>
             </div>
           </div>
@@ -107,7 +138,8 @@ class AccountPopup extends Component {
 AccountPopup.propTypes = {
   popUpOpen: PropTypes.bool.isRequired,
   changePopupStatus: PropTypes.func.isRequired,
-  logIn: PropTypes.func.isRequired
+  logIn: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -116,5 +148,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { changePopupStatus, logIn }
+  { changePopupStatus, logIn, registerUser }
 )(AccountPopup);

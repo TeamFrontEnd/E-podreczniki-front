@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-
-import Chapters from "./../section/Chapters";
+import { Link } from "react-router-dom";
 
 import "./lesson.css";
-
-import { Link } from "react-router-dom";
 
 class Lessons extends Component {
   state = {
@@ -60,6 +57,10 @@ class Lessons extends Component {
     this.getLesson(this.props.match.params.slug);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.getLesson(nextProps.match.params.slug);
+  }
+
   generateList = () => {
     let list;
     list = this.state.textbookContent.map((chapter, index) => {
@@ -94,7 +95,6 @@ class Lessons extends Component {
   };
 
   render() {
-    let count = 1;
     let contentList;
     contentList = this.generateList();
     return (

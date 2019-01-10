@@ -35,12 +35,11 @@ class Textbook extends Component {
     const { textbooks, category } = this.state;
     return (
       <div>
-        <h1>Textbooks but also searchBar to do</h1>
-        {category.name}
-        {textbooks.map(book => {
+        <h1>{category.name}</h1>
+        {textbooks.map((book, booxIndex) => {
           let srcName = "http://127.0.0.1:8000" + book.path;
           return (
-            <div className="bookListItem">
+            <div className="bookListItem" key={"bookList_" + booxIndex}>
               <Link to={"/textbook/" + book.slug}>
                 <img
                   src={srcName}

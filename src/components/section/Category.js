@@ -15,10 +15,14 @@ class Category extends Component {
   render() {
     return (
       <div className="categoryBox">
-        {this.props.categories.map(category => {
+        {this.props.categories.map((category, index) => {
           let srcName = "http://127.0.0.1:8000" + category.path;
           return (
-            <Link to={"/category/" + category.slug} className="categoryLink">
+            <Link
+              to={"/category/" + category.slug}
+              className="categoryLink"
+              key={"category_" + index}
+            >
               <img
                 className="categoryImage"
                 src={srcName}

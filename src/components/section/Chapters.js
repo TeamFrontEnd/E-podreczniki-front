@@ -8,7 +8,8 @@ import { settextBookSlug } from "../../actions/sectionActions";
 class Chapters extends Component {
   state = {
     requestMessage: "",
-    textbookContent: []
+    textbookContent: [],
+    textbookName: ""
   };
 
   getChapters = async slug => {
@@ -27,7 +28,8 @@ class Chapters extends Component {
       textbookContent: res.data.data.map(chapter => ({
         ...chapter,
         showLessons: true
-      }))
+      })),
+      textbookName: res.data.additionalData.textbookTitle
     });
   };
 
@@ -51,7 +53,7 @@ class Chapters extends Component {
   addToRedux = () => {
     let adres = this.props.match.params.slug;
     this.props.settextBookSlug(adres);
-  }
+  };
   generateBookContent = () => {
     let content = this.state.textbookContent.map((chapter, chapterIndex) => {
       let chapterContent = null;
@@ -62,22 +64,29 @@ class Chapters extends Component {
       ) {
         chapterContent = chapter.lessons.map((lesson, index) => {
           return (
-            <Link onClick={this.addToRedux.bind(this)} className="spanLessonList" to={"/lesson/" + lesson.slug} key={'lesson_' + index}>
+            <Link
+              onClick={this.addToRedux.bind(this)}
+              className="spanLessonList"
+              to={"/lesson/" + lesson.slug}
+              key={"lesson_" + index}
+            >
               {index + 1 + ". " + lesson.title}
             </Link>
           );
         });
       }
       return (
-        <div key={'chapter_' + chapterIndex}>
-          <h3 className="chapterHeader" onClick={this.toggleChapter.bind(this, chapterIndex)}>
+        <div key={"chapter_" + chapterIndex}>
+          <h3
+            className="chapterHeader"
+            onClick={this.toggleChapter.bind(this, chapterIndex)}
+          >
             Rozdział {chapter.number}.{" " + chapter.title}
           </h3>
 
           {chapterContent ? (
             <div className="bookLessonList">{chapterContent}</div>
           ) : null}
-
         </div>
       );
     });
@@ -85,16 +94,27 @@ class Chapters extends Component {
   };
 
   render() {
+    const { textbookName, textbookContent } = this.state;
     let contentList;
     if (this.state.textbookContent.length)
       contentList = this.generateBookContent();
+    if (
+      textbookName !== "" &&
+      Array.isArray(textbookContent) &&
+      !textbookContent.length
+    ) {
+      contentList = <h3>Książka jest pusta</h3>;
+    }
     return (
       <div>
-        <h1>Rozdziały</h1>
+        <h1>{this.state.textbookName}</h1>
         {contentList}
       </div>
     );
   }
 }
 
-export default connect(null, {settextBookSlug})(Chapters);
+export default connect(
+  null,
+  { settextBookSlug }
+)(Chapters);

@@ -30,7 +30,9 @@ class Header extends Component {
           </Link>
           <div className="userPanel">
             {this.props.logIn ? (
-              <span className="emailAdress">{this.props.email}</span>
+              <Link to="/user/account" className="emailAdress">
+                {this.props.email}
+              </Link>
             ) : (
               <a href="login" className="accoutLink" onClick={this.onLinkClick}>
                 {this.props.email}

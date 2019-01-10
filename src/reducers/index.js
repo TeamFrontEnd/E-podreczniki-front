@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
 import appReducer from "./appReducer";
-import lessonReducer from "./lessonReducer";
 import sectionReducer from "./sectionReducer";
+import userReducer from "./userReducer";
 
 export default combineReducers({
   app: appReducer,
-  lesson: lessonReducer,
+  user: userReducer,
   section: sectionReducer
 });
